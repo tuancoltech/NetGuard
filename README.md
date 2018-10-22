@@ -49,7 +49,7 @@ Requirements:
 Downloads:
 
 * [GitHub](https://github.com/M66B/NetGuard/releases)
-* [Google Play](https://play.google.com/store/apps/details?id=eu.faircode.netguard)
+* [Google Play](https://play.google.com/store/apps/details?id=anom.netguard)
 
 Usage:
 

@@ -21,7 +21,7 @@
 -keepattributes SourceFile,LineNumberTable
 
 #NetGuard
--keepnames class eu.faircode.netguard.** { *; }
+-keepnames class anom.netguard.** { *; }
 
 #JNI
 -keepclasseswithmembernames class * {
@@ -29,18 +29,18 @@
 }
 
 #JNI callbacks
--keep class eu.faircode.netguard.Allowed { *; }
--keep class eu.faircode.netguard.Packet { *; }
--keep class eu.faircode.netguard.ResourceRecord { *; }
--keep class eu.faircode.netguard.Usage { *; }
--keep class eu.faircode.netguard.ServiceSinkhole {
+-keep class anom.netguard.Allowed { *; }
+-keep class anom.netguard.Packet { *; }
+-keep class anom.netguard.ResourceRecord { *; }
+-keep class anom.netguard.Usage { *; }
+-keep class anom.netguard.ServiceSinkhole {
     void nativeExit(java.lang.String);
     void nativeError(int, java.lang.String);
-    void logPacket(eu.faircode.netguard.Packet);
-    void dnsResolved(eu.faircode.netguard.ResourceRecord);
+    void logPacket(anom.netguard.Packet);
+    void dnsResolved(anom.netguard.ResourceRecord);
     boolean isDomainBlocked(java.lang.String);
-    eu.faircode.netguard.Allowed isAddressAllowed(eu.faircode.netguard.Packet);
-    void accountUsage(eu.faircode.netguard.Usage);
+    anom.netguard.Allowed isAddressAllowed(anom.netguard.Packet);
+    void accountUsage(anom.netguard.Usage);
 }
 
 #Support library

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="eu.faircode.netguard">
+    package="anom.netguard">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -15,12 +15,12 @@
     <!-- http://developer.android.com/guide/topics/security/permissions.html#normal-dangerous -->
 
     <permission
-        android:name="eu.faircode.netguard.permission.ADMIN"
+        android:name="anom.netguard.permission.ADMIN"
         android:description="@string/app_description"
         android:label="@string/app_name"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="eu.faircode.netguard.permission.ADMIN" />
+    <uses-permission android:name="anom.netguard.permission.ADMIN" />
 
     <uses-feature
         android:name="android.hardware.wifi"
@@ -146,8 +146,8 @@
             android:label="@string/app_name"
             android:theme="@style/AppDialog">
             <intent-filter>
-                <action android:name="eu.faircode.netguard.START_PORT_FORWARD" />
-                <action android:name="eu.faircode.netguard.STOP_PORT_FORWARD" />
+                <action android:name="anom.netguard.START_PORT_FORWARD" />
+                <action android:name="anom.netguard.STOP_PORT_FORWARD" />
             </intent-filter>
         </activity>
 
@@ -164,7 +164,7 @@
             android:name=".ServiceExternal"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="eu.faircode.netguard.DOWNLOAD_HOSTS_FILE" />
+                <action android:name="anom.netguard.DOWNLOAD_HOSTS_FILE" />
             </intent-filter>
         </service>
 
@@ -249,12 +249,12 @@
         <receiver
             android:name=".WidgetAdmin"
             android:label="@string/app_name"
-            android:permission="eu.faircode.netguard.permission.ADMIN">
+            android:permission="anom.netguard.permission.ADMIN">
             <intent-filter>
-                <action android:name="eu.faircode.netguard.ON" />
-                <action android:name="eu.faircode.netguard.OFF" />
-                <action android:name="eu.faircode.netguard.LOCKDOWN_ON" />
-                <action android:name="eu.faircode.netguard.LOCKDOWN_OFF" />
+                <action android:name="anom.netguard.ON" />
+                <action android:name="anom.netguard.OFF" />
+                <action android:name="anom.netguard.LOCKDOWN_ON" />
+                <action android:name="anom.netguard.LOCKDOWN_OFF" />
             </intent-filter>
         </receiver>
     </application>

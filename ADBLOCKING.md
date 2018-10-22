@@ -60,11 +60,11 @@ Automation:
 
 You can automatically download a hosts file by sending this service intent with your favorite automation tool, like Tasker:
 
-`eu.faircode.netguard.DOWNLOAD_HOSTS_FILE`
+`anom.netguard.DOWNLOAD_HOSTS_FILE`
 
 For example using [adb](https://developer.android.com/studio/command-line/adb.html) from the command line:
 
-`adb shell am startservice -a eu.faircode.netguard.DOWNLOAD_HOSTS_FILE`
+`adb shell am startservice -a anom.netguard.DOWNLOAD_HOSTS_FILE`
 
 <br />
 
