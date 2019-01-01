@@ -61,6 +61,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -112,6 +113,9 @@ public class ActivityMain extends AppCompatActivity implements SharedPreferences
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "Create version=" + Util.getSelfVersionName(this) + "/" + Util.getSelfVersionCode(this));
         Util.logExtras(getIntent());
+
+        //Disable user from touching application screen
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         // Check minimum Android version
         if (Build.VERSION.SDK_INT < MIN_SDK) {

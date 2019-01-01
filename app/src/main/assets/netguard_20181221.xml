@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<netguard>
+  <application>
+    <setting key="subnet" type="boolean" value="false" />
+    <setting key="reload_onconnectivity" type="boolean" value="true" />
+    <setting key="resolve" type="boolean" value="true" />
+    <setting key="disable_on_call" type="boolean" value="false" />
+    <setting key="dark_theme" type="boolean" value="false" />
+    <setting key="whitelist_roaming" type="boolean" value="true" />
+    <setting key="lockdown_other" type="boolean" value="true" />
+    <setting key="lan" type="boolean" value="false" />
+    <setting key="lockdown" type="boolean" value="false" />
+    <setting key="national_roaming" type="boolean" value="true" />
+    <setting key="pcap_file_size" type="string" value="2" />
+    <setting key="whitelist_other" type="boolean" value="false" />
+    <setting key="unmetered_4g" type="boolean" value="false" />
+    <setting key="show_disabled" type="boolean" value="false" />
+    <setting key="show_nointernet" type="boolean" value="false" />
+    <setting key="hint_push" type="boolean" value="false" />
+    <setting key="pcap_record_size" type="string" value="64" />
+    <setting key="sort" type="string" value="name" />
+    <setting key="version" type="integer" value="2018111701" />
+    <setting key="wifi_homes" type="set" value="" />
+    <setting key="proto_udp" type="boolean" value="true" />
+    <setting key="traffic_blocked" type="boolean" value="true" />
+    <setting key="hosts_url" type="string" value="https://www.netguard.me/hosts" />
+    <setting key="install" type="boolean" value="false" />
+    <setting key="use_metered" type="boolean" value="false" />
+    <setting key="nodoze" type="boolean" value="false" />
+    <setting key="stats_frequency" type="string" value="1000" />
+    <setting key="lockdown_wifi" type="boolean" value="true" />
+    <setting key="eu_roaming" type="boolean" value="true" />
+    <setting key="proto_other" type="boolean" value="true" />
+    <setting key="show_top" type="boolean" value="false" />
+    <setting key="show_user" type="boolean" value="true" />
+    <setting key="notify_access" type="boolean" value="true" />
+    <setting key="log" type="boolean" value="false" />
+    <setting key="log_app" type="boolean" value="false" />
+    <setting key="show_stats" type="boolean" value="false" />
+    <setting key="show_system" type="boolean" value="false" />
+    <setting key="enabled" type="boolean" value="true" />
+    <setting key="proto_tcp" type="boolean" value="true" />
+    <setting key="manage_system" type="boolean" value="true" />
+    <setting key="pcap" type="boolean" value="false" />
+    <setting key="hint_usage" type="boolean" value="false" />
+    <setting key="clear_onreload" type="boolean" value="false" />
+    <setting key="stats_samples" type="string" value="90" />
+    <setting key="screen_other" type="boolean" value="false" />
+    <setting key="initialized" type="boolean" value="true" />
+    <setting key="theme" type="string" value="teal" />
+    <setting key="whitelist_wifi" type="boolean" value="false" />
+    <setting key="unmetered_2g" type="boolean" value="false" />
+    <setting key="use_hosts" type="boolean" value="true" />
+    <setting key="hint_system" type="boolean" value="false" />
+    <setting key="screen_on" type="boolean" value="false" />
+    <setting key="update_check" type="boolean" value="true" />
+    <setting key="socks5_enabled" type="boolean" value="false" />
+    <setting key="debug_iab" type="boolean" value="false" />
+    <setting key="ip6" type="boolean" value="true" />
+    <setting key="filter" type="boolean" value="false" />
+    <setting key="auto_enable" type="string" value="0" />
+    <setting key="screen_delay" type="string" value="0" />
+    <setting key="watchdog" type="string" value="5" />
+    <setting key="hint_whitelist" type="boolean" value="false" />
+    <setting key="traffic_allowed" type="boolean" value="true" />
+    <setting key="organization" type="boolean" value="true" />
+    <setting key="loglevel" type="string" value="6" />
+    <setting key="screen_wifi" type="boolean" value="false" />
+    <setting key="tethering" type="boolean" value="false" />
+    <setting key="track_usage" type="boolean" value="true" />
+    <setting key="unmetered_3g" type="boolean" value="false" />
+  </application>
+  <wifi>
+    <setting key="ru.v_a_v.celltowerlocator" type="boolean" value="false" />
+    <setting key="eu.siacs.conversations" type="boolean" value="false" />
+    <setting key="org.fdroid.fdroid" type="boolean" value="false" />
+    <setting key="com.eartoearoak.cellmap" type="boolean" value="false" />
+    <setting key="com.mobileiron" type="boolean" value="false" />
+    <setting key="com.nordvpn.android" type="boolean" value="false" />
+    <setting key="cell.signal.finder.codeb" type="boolean" value="false" />
+    <setting key="com.android.chrome" type="boolean" value="false" />
+  </wifi>
+  <mobile>
+    <setting key="com.android.providers.downloads" type="boolean" value="false" />
+    <setting key="org.mozilla.focus" type="boolean" value="false" />
+    <setting key="com.eartoearoak.cellmap" type="boolean" value="false" />
+    <setting key="onion.fire" type="boolean" value="false" />
+    <setting key="com.android.vending" type="boolean" value="false" />
+    <setting key="com.aypdev.glocation" type="boolean" value="false" />
+    <setting key="org.zwanoo.android.speedtest" type="boolean" value="false" />
+    <setting key="com.android.chrome" type="boolean" value="false" />
+    <setting key="ru.v_a_v.celltowerlocator" type="boolean" value="false" />
+    <setting key="com.samourai.wallet" type="boolean" value="false" />
+    <setting key="com.android.providers.downloads.ui" type="boolean" value="false" />
+    <setting key="eu.siacs.conversations" type="boolean" value="false" />
+    <setting key="com.android.mtp" type="boolean" value="false" />
+    <setting key="com.android.providers.media" type="boolean" value="false" />
+    <setting key="org.fdroid.fdroid" type="boolean" value="false" />
+    <setting key="com.mobileiron" type="boolean" value="false" />
+    <setting key="com.nordvpn.android" type="boolean" value="false" />
+    <setting key="com.rochdev.android.iplocation" type="boolean" value="false" />
+    <setting key="cell.signal.finder.codeb" type="boolean" value="false" />
+    <setting key="com.google.android.gsf" type="boolean" value="false" />
+  </mobile>
+  <screen_wifi />
+  <screen_other />
+  <roaming>
+    <setting key="com.android.providers.downloads.ui" type="boolean" value="false" />
+    <setting key="one.anom.ent" type="boolean" value="false" />
+    <setting key="com.android.providers.downloads" type="boolean" value="false" />
+    <setting key="com.android.providers.media" type="boolean" value="false" />
+    <setting key="com.android.mtp" type="boolean" value="false" />
+    <setting key="org.mozilla.focus" type="boolean" value="true" />
+    <setting key="com.android.vending" type="boolean" value="false" />
+    <setting key="com.google.android.backuptransport" type="boolean" value="false" />
+    <setting key="com.google.android.gms" type="boolean" value="false" />
+    <setting key="com.google.android.gsf" type="boolean" value="false" />
+  </roaming>
+  <lockdown>
+    <setting key="com.android.providers.downloads.ui" type="boolean" value="true" />
+    <setting key="com.android.providers.downloads" type="boolean" value="true" />
+    <setting key="com.android.providers.media" type="boolean" value="true" />
+    <setting key="com.android.mtp" type="boolean" value="true" />
+    <setting key="com.android.vending" type="boolean" value="true" />
+    <setting key="com.google.android.gms" type="boolean" value="true" />
+    <setting key="com.google.android.backuptransport" type="boolean" value="true" />
+    <setting key="com.google.android.gsf" type="boolean" value="true" />
+  </lockdown>
+  <apply />
+  <notify />
+  <filter>
+    <rule pkg="com.android.providers.downloads" version="4" protocol="6" daddr="ajax.googleapis.com" dport="443" time="1539118502963" block="0" />
+    <rule pkg="com.android.providers.media" version="4" protocol="6" daddr="ajax.googleapis.com" dport="443" time="1539118502963" block="0" />
+    <rule pkg="com.android.mtp" version="4" protocol="6" daddr="ajax.googleapis.com" dport="443" time="1539118502963" block="0" />
+    <rule pkg="com.android.providers.downloads.ui" version="4" protocol="6" daddr="ajax.googleapis.com" dport="443" time="1539118502963" block="0" />
+    <rule pkg="com.android.providers.downloads" version="4" protocol="6" daddr="play.googleapis.com" dport="443" time="1540095095052" block="0" />
+    <rule pkg="com.android.providers.media" version="4" protocol="6" daddr="play.googleapis.com" dport="443" time="1540095095052" block="0" />
+    <rule pkg="com.android.mtp" version="4" protocol="6" daddr="play.googleapis.com" dport="443" time="1540095095052" block="0" />
+    <rule pkg="com.android.providers.downloads.ui" version="4" protocol="6" daddr="play.googleapis.com" dport="443" time="1540095095052" block="0" />
+  </filter>
+  <forward />
+</netguard>

@@ -25,14 +25,29 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.media.AudioAttributes;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParserFactory;
+
 public class ApplicationEx extends Application {
+
     private static final String TAG = "NetGuard.App";
 
     private Thread.UncaughtExceptionHandler mPrevHandler;
+    private ExecutorService mExecutorPreloadSettings = Executors.newSingleThreadExecutor();
 
     @Override
     public void onCreate() {
@@ -56,21 +71,79 @@ public class ApplicationEx extends Application {
                 }
             }
         });
+
+        mExecutorPreloadSettings.execute(new Runnable() {
+            @Override
+            public void run() {
+                preloadConfigurationFile();
+            }
+        });
+    }
+
+    /**
+     * Import configurations from xml file, which is stored in assets folder
+     */
+    private void preloadConfigurationFile() {
+        InputStream in = null;
+        try {
+            xmlImport(getAssets().open("netguard_20181221.xml"));
+        } catch (Throwable ex) {
+            Log.e(TAG, ex.toString() + "\n" + Log.getStackTraceString(ex));
+        } finally {
+            if (in != null)
+                try {
+                    in.close();
+                } catch (IOException ex) {
+                    Log.e(TAG, ex.toString() + "\n" + Log.getStackTraceString(ex));
+                }
+        }
+    }
+
+    private void xmlImport(InputStream in) throws IOException, SAXException, ParserConfigurationException {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putBoolean("enabled", false).apply();
+        ServiceSinkhole.stop("import", this, false);
+
+        XMLReader reader = SAXParserFactory.newInstance().newSAXParser().getXMLReader();
+        XmlImportHandler handler = new XmlImportHandler(this);
+        reader.setContentHandler(handler);
+        reader.parse(new InputSource(in));
+
+        Util.xmlImport(handler.application, prefs);
+        Util.xmlImport(handler.wifi, getSharedPreferences("wifi", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.mobile, getSharedPreferences("other", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.screen_wifi, getSharedPreferences("screen_wifi", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.screen_other, getSharedPreferences("screen_other", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.roaming, getSharedPreferences("roaming", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.lockdown, getSharedPreferences("lockdown", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.apply, getSharedPreferences("apply", Context.MODE_PRIVATE));
+        Util.xmlImport(handler.notify, getSharedPreferences("notify", Context.MODE_PRIVATE));
+
+        // Upgrade imported settings
+        ReceiverAutostart.upgrade(true, this);
+
+        DatabaseHelper.clearCache();
+
+        // Refresh UI
+        prefs.edit().putBoolean("imported", true).apply();
     }
 
     @TargetApi(Build.VERSION_CODES.O)
     private void createNotificationChannels() {
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        NotificationChannel foreground = new NotificationChannel("foreground", getString(R.string.channel_foreground), NotificationManager.IMPORTANCE_MIN);
+        NotificationChannel foreground = new NotificationChannel("foreground", getString(R.string.channel_foreground)
+                , NotificationManager.IMPORTANCE_MIN);
         foreground.setSound(null, Notification.AUDIO_ATTRIBUTES_DEFAULT);
         nm.createNotificationChannel(foreground);
 
-        NotificationChannel notify = new NotificationChannel("notify", getString(R.string.channel_notify), NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel notify = new NotificationChannel("notify", getString(R.string.channel_notify),
+                NotificationManager.IMPORTANCE_DEFAULT);
         notify.setSound(null, Notification.AUDIO_ATTRIBUTES_DEFAULT);
         nm.createNotificationChannel(notify);
 
-        NotificationChannel access = new NotificationChannel("access", getString(R.string.channel_access), NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel access = new NotificationChannel("access", getString(R.string.channel_access),
+                NotificationManager.IMPORTANCE_DEFAULT);
         access.setSound(null, Notification.AUDIO_ATTRIBUTES_DEFAULT);
         nm.createNotificationChannel(access);
     }

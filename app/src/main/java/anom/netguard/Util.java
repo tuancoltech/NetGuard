@@ -1006,4 +1006,35 @@ public class Util {
         }
         return builder;
     }
+
+    /**
+     * Import preference key-value pairs from a Map into current shared preference
+     * @param settings The settings need to be stored
+     * @param prefs The current {@link SharedPreferences} data
+     */
+    public static void xmlImport(Map<String, Object> settings, SharedPreferences prefs) {
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Clear existing setting
+        for (String key : prefs.getAll().keySet())
+            if (!"enabled".equals(key))
+                editor.remove(key);
+
+        // Apply new settings
+        for (String key : settings.keySet()) {
+            Object value = settings.get(key);
+            if (value instanceof Boolean)
+                editor.putBoolean(key, (Boolean) value);
+            else if (value instanceof Integer)
+                editor.putInt(key, (Integer) value);
+            else if (value instanceof String)
+                editor.putString(key, (String) value);
+            else if (value instanceof Set)
+                editor.putStringSet(key, (Set<String>) value);
+            else
+                Log.e(TAG, "Unknown type=" + value.getClass());
+        }
+
+        editor.apply();
+    }
 }
